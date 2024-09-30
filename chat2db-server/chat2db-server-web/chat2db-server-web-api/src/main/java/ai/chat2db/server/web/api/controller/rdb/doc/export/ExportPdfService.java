@@ -73,7 +73,7 @@ public class ExportPdfService extends DatabaseExportService {
                     for (IndexInfo indexInfo : indexInfoVOList) {
                         process(table, getIndexValues(indexInfo), font);
                     }
-                    table.setPaddingTop(5);
+//                    table.setPaddingTop(5);
                     document.add(table);
                 }
                 document.add(new Paragraph());

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # JRE_DIR="${JAVA_HOME}/jre"
-JRE_DIR="~/Library/Java/JavaVirtualMachines/corretto-17.0.8.1/Contents/Home/"
+JRE_DIR="~/Library/Java/JavaVirtualMachines/corretto-17.0.12/Contents/Home/"
 JRE_TARGET_DIR="chat2db-client/static/jre"
 CURRENT_ID="123"
 

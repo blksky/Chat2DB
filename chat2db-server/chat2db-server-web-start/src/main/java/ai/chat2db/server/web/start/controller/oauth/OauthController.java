@@ -3,7 +3,9 @@ package ai.chat2db.server.web.start.controller.oauth;
 import ai.chat2db.server.domain.api.enums.RoleCodeEnum;
 import ai.chat2db.server.domain.api.enums.ValidStatusEnum;
 import ai.chat2db.server.domain.api.model.User;
+import ai.chat2db.server.domain.api.param.user.UserUpdateParam;
 import ai.chat2db.server.domain.api.service.UserService;
+import ai.chat2db.server.web.start.controller.oauth.request.ChangeUserAndPwdRequest;
 import ai.chat2db.server.web.start.controller.oauth.request.LoginRequest;
 import ai.chat2db.server.tools.base.excption.BusinessException;
 import ai.chat2db.server.tools.base.wrapper.result.ActionResult;
@@ -34,6 +36,28 @@ public class OauthController {
 
     @Resource
     private UserService userService;
+
+    /**
+     * 修改用户名及密码
+     * @param request
+     * @return
+     */
+    @PostMapping("changUserAndPwd")
+    public DataResult changeUserAndPwd(@Validated @RequestBody ChangeUserAndPwdRequest request) {
+        //   Query user
+        User user = userService.query(request.getUserId()).getData();
+        this.validateUser(user);
+        UserUpdateParam updateParam = new UserUpdateParam();
+        updateParam.setId(user.getId());
+        updateParam.setNickName(request.getUserName());
+        updateParam.setPassword(request.getPassword());
+        updateParam.setStatus(user.getStatus());
+        updateParam.setEmail(user.getEmail());
+        updateParam.setRoleCode(user.getRoleCode());
+        userService.update(updateParam);
+        return DataResult.of(getLoginUser());
+    }
+
 
     /**
      * Login with username and password

@@ -18,8 +18,8 @@ public enum RoleCodeEnum implements BaseEnum<String> {
     /**
      * ADMIN
      */
-    ADMIN("ADMIN", 2L, System.getenv().getOrDefault("ADMIN_NAME","chat2db"),
-            System.getenv().getOrDefault("ADMIN_PASSWORD","chat2db")),
+    ADMIN("ADMIN", 2L, System.getenv().getOrDefault("ADMIN_NAME","chatbi"),
+            System.getenv().getOrDefault("ADMIN_PASSWORD","chatbi")),
 
     /**
      * USER
